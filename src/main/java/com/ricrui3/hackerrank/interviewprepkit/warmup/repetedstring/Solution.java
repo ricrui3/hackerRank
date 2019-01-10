@@ -1,4 +1,4 @@
-package com.ricrui3.hackerrank.interviewprepkit.repetedstring;
+package com.ricrui3.hackerrank.interviewprepkit.warmup.repetedstring;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

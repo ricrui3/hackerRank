@@ -1,4 +1,4 @@
-package com.ricrui3.hackerrank.interviewprepkit.countingvalleys;
+package com.ricrui3.hackerrank.interviewprepkit.warmup.countingvalleys;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
