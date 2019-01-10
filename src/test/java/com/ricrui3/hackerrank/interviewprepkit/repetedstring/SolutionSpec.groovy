@@ -5,14 +5,15 @@ import spock.lang.Unroll
 
 class SolutionSpec extends Specification {
     @Unroll
-    def 'Repeated Strin Challenge Test #stringToRepeat'() {
+    def 'Repeated String Challenge Test #stringToRepeat'() {
         when:
         def aCount = Solution.repeatedString(stringToRepeat, numChars)
         then:
         aCount == aCountExpected
-        println "El numero de repeticiones encontradas fue ${aCount}"
+        println "The number of repeated a's found is ${aCount}"
         where:
         stringToRepeat | numChars | aCountExpected
+        'ababa'        | 3        | 2
         'abcac'        | 10       | 4
         'a'            | 1000     | 1000
         'bbbbabbbb'    | 31       | 3

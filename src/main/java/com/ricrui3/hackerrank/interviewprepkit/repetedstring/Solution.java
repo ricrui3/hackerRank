@@ -12,7 +12,7 @@ public class Solution {
 
     // Complete the repeatedString function below.
     static long repeatedString(String s, long n) {
-        long totalAs = countAs(s, s.length());
+        long totalAs = n < s.length() ? countAs(s, n) : countAs(s, s.length());
         if (s.length() < n) {
             long requiredRepetitions = n / s.length();
             long module = n % s.length();
