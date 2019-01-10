@@ -14,7 +14,7 @@ public class Solution {
     // Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
         setup();
-        int maxSum = 0;
+        Integer maxSum = null;
         for (int j = 0; j < 6 - 2; j++) {
             for (int i = 0; i < 6 - 2; i++) {
                 int hGSum = 0;
@@ -23,7 +23,7 @@ public class Solution {
                     int posj = j + position[1];
                     hGSum += arr[posi][posj];
                 }
-                maxSum = hGSum > maxSum ? hGSum : maxSum;
+                maxSum = maxSum == null || hGSum > maxSum ? hGSum : maxSum;
                 System.out.print(hGSum + ", ");
             }
         }
