@@ -13,7 +13,27 @@ public class Solution {
 
     // Complete the rotLeft function below.
     static int[] rotLeft(int[] a, int d) {
-        return new int[]{93, 93};
+        int[] b = new int[a.length];
+
+        if (d % a.length == 0) {
+            return a;
+        }
+
+        int aCount = d;
+        int bCount = 0;
+
+        while (aCount != 0) {
+            b[bCount] = a[aCount];
+            bCount++;
+            aCount = aCount == a.length - 1 ? 0 : aCount + 1;
+        }
+
+        while (aCount < d) {
+            b[bCount] = a[aCount];
+            bCount++;
+            aCount++;
+        }
+        return b;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
