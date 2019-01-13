@@ -20,6 +20,18 @@ class SolutionSpec extends Specification {
         sampleM  | sampleN  | "No"
         sample0M | sample0N | "Yes"
         sample1M | sample1N | "No"
+    }
+
+    def "Test for the rewritten to java editorial solution of the 'Ransom Note' Challenge"() {
+        when:
+        Solution.editorialSolution(magazine, note)
+        then:
+        outputCapture.toString() == "${result}\n"
+        where:
+        magazine | note     | result
+        sampleM  | sampleN  | "No"
+        sample0M | sample0N | "Yes"
+        sample1M | sample1N | "No"
 
     }
 

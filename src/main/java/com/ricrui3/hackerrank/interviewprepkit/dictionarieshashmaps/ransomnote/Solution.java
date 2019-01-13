@@ -1,5 +1,7 @@
 package com.ricrui3.hackerrank.interviewprepkit.dictionarieshashmaps.ransomnote;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Solution {
@@ -21,6 +23,34 @@ public class Solution {
                 break;
             }
         }
+        if (isPossible) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+
+    //This is the java rewriting of the editorial solution
+    static void editorialSolution(String[] m, String[] n) {
+        boolean isPossible = true;
+        Map<String, Integer> magazine = new HashMap<>();
+        Map<String, Integer> note = new HashMap<>();
+
+        for (String s : m) {
+            magazine.put(s, magazine.get(s) == null ? 1 : magazine.get(s) + 1);
+        }
+
+        for (String s : n) {
+            note.put(s, note.get(s) == null ? 1 : note.get(s) + 1);
+        }
+
+        for (Map.Entry<String, Integer> entry : note.entrySet()) {
+            if (magazine.get(entry.getKey()) == null || magazine.get(entry.getKey()) < entry.getValue()) {
+                isPossible = false;
+                break;
+            }
+        }
+
         if (isPossible) {
             System.out.println("Yes");
         } else {
