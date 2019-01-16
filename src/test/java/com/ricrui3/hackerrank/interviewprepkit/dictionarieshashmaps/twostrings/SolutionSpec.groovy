@@ -15,4 +15,16 @@ class SolutionSpec extends Specification {
         'hello' | 'world' | 'YES'
         'hi'    | 'world' | 'NO'
     }
+
+    @Unroll
+    def "Solucion de la editorial al challenge de 'Two Strings' cadenas: #str1, #str2"() {
+        when:
+        String response = Solution.editorialSolution(str1, str2)
+        then:
+        response == expectedResponse
+        where:
+        str1    | str2    | expectedResponse
+        'hello' | 'world' | 'YES'
+        'hi'    | 'world' | 'NO'
+    }
 }

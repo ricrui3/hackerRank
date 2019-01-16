@@ -3,9 +3,7 @@ package com.ricrui3.hackerrank.interviewprepkit.dictionarieshashmaps.twostrings;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created By ricardo.ruiz
@@ -30,6 +28,22 @@ public class Solution {
             }
         }
         return "NO";
+    }
+
+    //This is the java rewriting of the editorial solution
+    static String editorialSolution(String s1, String s2) {
+        Set<Character> s1Set = convertToSet(s1);
+        Set<Character> s2Set = convertToSet(s2);
+        s1Set.retainAll(s2Set);
+        return s1Set.isEmpty() ? "NO" : "YES";
+    }
+
+    private static Set<Character> convertToSet(String string) {
+        Set<Character> resultSet = new HashSet<>();
+        for (int i = 0; i < string.length(); i++) {
+            resultSet.add(string.charAt(i));
+        }
+        return resultSet;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
