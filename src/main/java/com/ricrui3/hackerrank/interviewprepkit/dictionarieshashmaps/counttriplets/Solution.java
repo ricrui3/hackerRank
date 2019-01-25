@@ -2,9 +2,9 @@ package com.ricrui3.hackerrank.interviewprepkit.dictionarieshashmaps.counttriple
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -16,31 +16,33 @@ public class Solution {
 
     // Complete the countTriplets function below.
     static long countTriplets(List<Long> arr, long r) {
-        Map<Long, List<Long>> positions = getPositions(arr);
+        List<LinkedList<Long>> foundElements = new ArrayList<>();
         long tripletsCounter = 0L;
 
-        for (int i = 0; i < arr.size(); i++) {
-            Long current = arr.get(i);
-            Long jCounter = positions.get(current * r) == null ? 0L : (long) positions.get(current * r).size();
-            Long kCounter = positions.get(current * r * r) == null ? 0L : (long) positions.get(current * r * r).size();
-            if (r == 1 && current != 0) {
-                jCounter--;
-                kCounter -= 2;
+        for (Long current : arr) {
+            List<Long> newPossibleTriplets = new ArrayList<>();
+            Iterator<LinkedList<Long>> it = foundElements.iterator();
+            while (it.hasNext()) {
+                LinkedList<Long> possibleTriplet = it.next();
+                if (possibleTriplet.peekLast() * r == current && possibleTriplet.size() < 3) {
+                    if (possibleTriplet.size() == 1) {
+                        newPossibleTriplets.add(possibleTriplet.peekLast());
+                    }
+                    possibleTriplet.add(current);
+                    if (possibleTriplet.size() == 3) {
+                        it.remove();
+                        tripletsCounter++;
+                    }
+                }
             }
-            tripletsCounter += jCounter * kCounter;
+            newPossibleTriplets.add(current);
+            for (Long newPossibleTriplet : newPossibleTriplets) {
+                LinkedList<Long> newList = new LinkedList<>();
+                newList.add(newPossibleTriplet);
+                foundElements.add(newList);
+            }
         }
-
         return tripletsCounter;
-    }
-
-
-    private static Map<Long, List<Long>> getPositions(List<Long> arr) {
-        Map<Long, List<Long>> pos = new HashMap<>();
-        for (int i = 0; i < arr.size(); i++) {
-            pos.computeIfAbsent(arr.get(i), k -> new ArrayList<>());
-            pos.get(arr.get(i)).add((long) i);
-        }
-        return pos;
     }
 
     public static void main(String[] args) throws IOException {
@@ -64,5 +66,6 @@ public class Solution {
 
         bufferedReader.close();
         bufferedWriter.close();
+
     }
 }

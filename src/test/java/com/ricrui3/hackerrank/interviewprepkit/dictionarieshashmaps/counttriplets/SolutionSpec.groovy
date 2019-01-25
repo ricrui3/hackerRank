@@ -12,13 +12,13 @@ class SolutionSpec extends Specification {
         numberTriplets == expectedNumberTriplets
         where:
         arr                  | ratio | expectedNumberTriplets
-        [1L, 2L, 1L, 2L, 4L] | 2     | 3
-        //thenthousand1237()         | 1     | 166661666700000
+        //[1L, 2L, 1L, 2L, 4L] | 2     | 3
         //[1L, 1L, 1L, 1L]           | 1     | 24
-        //[1L, 3L, 9L, 9L, 27L, 81L] | 3     | 6
+        [1L, 3L, 9L, 9L, 27L, 81L] | 3 | 6
         //[1L, 4L, 16L, 64L]         | 4     | 2
         //[1L, 2L, 2L, 4L]           | 2     | 2
         //[1L, 5L, 5L, 25L, 125L]    | 5     | 4
+        //thenthousand1237()         | 1     | 166661666700000
     }
 
     List<Long> thenthousand1237() {
