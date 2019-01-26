@@ -1,10 +1,7 @@
 package com.ricrui3.hackerrank.interviewprepkit.dictionarieshashmaps.counttriplets;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -16,31 +13,29 @@ public class Solution {
 
     // Complete the countTriplets function below.
     static long countTriplets(List<Long> arr, long r) {
-        List<LinkedList<Long>> foundElements = new ArrayList<>();
+        Map<List<Long>, Long> record = new HashMap<>();
         long tripletsCounter = 0L;
 
         for (Long current : arr) {
-            List<Long> newPossibleTriplets = new ArrayList<>();
-            Iterator<LinkedList<Long>> it = foundElements.iterator();
-            while (it.hasNext()) {
-                LinkedList<Long> possibleTriplet = it.next();
-                if (possibleTriplet.peekLast() * r == current && possibleTriplet.size() < 3) {
-                    if (possibleTriplet.size() == 1) {
-                        newPossibleTriplets.add(possibleTriplet.peekLast());
-                    }
-                    possibleTriplet.add(current);
-                    if (possibleTriplet.size() == 3) {
-                        it.remove();
-                        tripletsCounter++;
-                    }
+            Long first = null;
+            Long second = null;
+            long secondMod = current % r;
+            if (secondMod == 0) {
+                second = current / r;
+                long firstMod = second % r;
+                if (firstMod == 0) {
+                    first = second / r;
                 }
             }
-            newPossibleTriplets.add(current);
-            for (Long newPossibleTriplet : newPossibleTriplets) {
-                LinkedList<Long> newList = new LinkedList<>();
-                newList.add(newPossibleTriplet);
-                foundElements.add(newList);
+            if (second != null) {
+                if (first != null) {
+                    tripletsCounter += record.getOrDefault(new ArrayList<>(Arrays.asList(first, second)), 0L);
+                }
+                Long secondRepetitions = record.getOrDefault(new ArrayList<>(Collections.singletonList(second)), 0L);
+                Long chainRepetition = record.getOrDefault(new ArrayList<>(Arrays.asList(second, current)), 0L);
+                record.put(new ArrayList<>(Arrays.asList(second, current)), secondRepetitions + chainRepetition);
             }
+            record.merge(new ArrayList<>(Collections.singletonList(current)), 1L, Long::sum);
         }
         return tripletsCounter;
     }
