@@ -1,2 +1,2 @@
-Solution to the 'Count Triplets' challenge.
-https://www.hackerrank.com/challenges/count-triplets-1/problem
+Solution to the 'Tree: Height of a Binary Tree' challenge.
+https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem
