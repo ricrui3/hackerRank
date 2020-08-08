@@ -1,7 +1,6 @@
-package com.ricrui3.hackerrank.interviewprepkit.trees.preordertraversal;
+package com.ricrui3.hackerrank.interviewprepkit.trees.traversals;
 
 import java.util.*;
-import java.io.*;
 
 class Node {
     Node left;
@@ -35,6 +34,26 @@ class Node {
         }
         if (root.right != null) {
             preOrder(root.right);
+        }
+    }
+
+    public static void postOrder(Node root) {
+        if (root.left != null) {
+            postOrder(root.left);
+        }
+        if (root.right != null) {
+            postOrder(root.right);
+        }
+        System.out.print(root.data + " ");
+    }
+
+    public static void inOrder(Node root) {
+        if (root.left != null) {
+            inOrder(root.left);
+        }
+        System.out.print(root.data + " ");
+        if (root.right != null) {
+            inOrder(root.right);
         }
     }
 
