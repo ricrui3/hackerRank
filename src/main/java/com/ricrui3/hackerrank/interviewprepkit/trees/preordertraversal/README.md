@@ -1,15 +1,15 @@
-Solution to the 'Tree: Preorder Traversal' challenge.
+# Solution to the 'Tree: Preorder Traversal' challenge.
 https://www.hackerrank.com/challenges/tree-preorder-traversal/problem
 
-#Problem
+## Problem
 Complete the preOrder function in your editor below, which has  parameter: a pointer to the root of a binary tree. It must print the values in the tree's preorder traversal as a single line of space-separated values.
-##Input Format
+## Input Format
 Our hidden tester code passes the root node of a binary tree to your preOrder function.
-#Constraints
+# Constraints
 1<= Nodes in the tree <= 500 
-##Output Format
+## Output Format
 Print the tree's preorder traversal as a single line of space-separated values.
-##Sample Input
+## Sample Input
      1
       \
        2
@@ -19,5 +19,5 @@ Print the tree's preorder traversal as a single line of space-separated values.
        3    6
         \
          4  
-##Sample Output
+## Sample Output
 `1 2 5 3 4 6 `
