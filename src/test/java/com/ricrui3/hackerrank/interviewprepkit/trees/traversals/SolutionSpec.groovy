@@ -34,6 +34,18 @@ class SolutionSpec extends Specification {
         "1 2 5 3 4 6" | "4 3 6 5 2 1 "
     }
 
+    def "Unit test for the Inorder Traversal challenge"() {
+        given:
+        Node tree = setupTree(treeString)
+        when:
+        Solution.inOrder(tree)
+        then:
+        outputCapture.toString() == inorderTraversalExpected
+        where:
+        treeString    | inorderTraversalExpected
+        "1 2 5 3 4 6" | "1 2 3 4 5 6 "
+    }
+
     public Node setupTree(String treeString) {
         String[] treeNodes = treeString.split(" ")
         Node tree = new Node(Integer.parseInt(treeNodes.first()))
