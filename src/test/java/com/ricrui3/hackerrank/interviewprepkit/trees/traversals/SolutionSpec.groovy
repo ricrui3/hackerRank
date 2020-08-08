@@ -1,4 +1,5 @@
-package com.ricrui3.hackerrank.interviewprepkit.trees.preordertraversal
+package com.ricrui3.hackerrank.interviewprepkit.trees.traversals
+
 
 import org.junit.Rule
 import org.springframework.boot.test.rule.OutputCapture
@@ -15,10 +16,22 @@ class SolutionSpec extends Specification {
         when:
         Solution.preOrder(tree)
         then:
-        outputCapture.toString() == preorderTraversalSpected
+        outputCapture.toString() == preorderTraversalExpected
         where:
-        treeString    | preorderTraversalSpected
+        treeString    | preorderTraversalExpected
         "1 2 5 3 4 6" | "1 2 5 3 4 6 "
+    }
+
+    def "Unit test for the Postorder Traversal challenge"() {
+        given:
+        Node tree = setupTree(treeString)
+        when:
+        Solution.postOrder(tree)
+        then:
+        outputCapture.toString() == postorderTraversalExpected
+        where:
+        treeString    | postorderTraversalExpected
+        "1 2 5 3 4 6" | "4 3 6 5 2 1 "
     }
 
     public Node setupTree(String treeString) {
